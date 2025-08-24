@@ -4,9 +4,17 @@
   "description": "API de Usuários: CRUD + Zod + Swagger",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "vagnercruz",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^9.34.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-import": "^2.32.0",
+    "prettier": "^3.6.2"
+  }
 }
