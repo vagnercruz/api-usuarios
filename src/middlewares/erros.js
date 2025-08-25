@@ -17,5 +17,5 @@ function manipuladorErros(err, _req, res, _next) {
   console.error(err);
   return res.status(500).json({ erro: 'Erro Interno' });
 
-  module.exports = {manipuladorErros};
+  module.exports = {manipuladorErros};  
 }
