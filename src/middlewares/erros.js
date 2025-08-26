@@ -1,7 +1,3 @@
-/**
- * Ajustando as Exceções conhecidas em Respostas HTTP (400/404/...).
- */
-
 function manipuladorErros(err, _req, res, _next) {
   if (err && err.issues && Array.isArray(err.issues)) {
     return res.status(400).json({
@@ -16,6 +12,6 @@ function manipuladorErros(err, _req, res, _next) {
 
   console.error(err);
   return res.status(500).json({ erro: 'Erro Interno' });
-
-  module.exports = {manipuladorErros};  
 }
+
+module.exports = { manipuladorErros };

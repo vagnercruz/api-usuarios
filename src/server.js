@@ -4,7 +4,7 @@
  */
 
 const app = require('./app');
-const repo = require('repositorio/UsuariosRepo');
+const repo = require('./repositorio/usuariosRepo');
 
 const PORTA = process.env.PORTA || 3333;
 
