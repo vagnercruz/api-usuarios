@@ -65,8 +65,7 @@ curl http://localhost:3333/docs/{id}
 A documentação da API está disponível em:
 
 * **[http://localhost:3333/docs](http://localhost:3333/docs)**
-* ou **[http://localhost:3333/api-docs](http://localhost:3333/api-docs)**
-
+  
 ---
 
 ## 🧬 Modelo (Schema) do Usuário
