@@ -1,8 +1,12 @@
 function manipuladorErros(err, _req, res, _next) {
-  if (err && err.issues && Array.isArray(err.issues)) {
+  if (err && (err.issues || err.errors)) {
+    const issues = err.issues || err.errors;
     return res.status(400).json({
-      erro: 'Validação Falhou',
-      detalhes: err.issues.map((i) => ({ caminho: i.path, mensagem: i.message })),
+      erro: 'Erro de validação',
+      detalhes: issues.map((i) => ({
+        caminho: Array.isArray(i.path) ? i.path.map(String) : [String(i.path)],
+        mensagem: i.message,
+      })),
     });
   }
 
