@@ -117,7 +117,7 @@
         }
       },
       "put": {
-        "summary": "Atualizar usuário por ID (PUT)",
+        "summary": "Atualizar usuário por ID",
         "parameters": [
           {
             "name": "id",
