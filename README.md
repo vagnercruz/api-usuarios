@@ -25,7 +25,7 @@ npm install
 npm run dev
 ```
 
-A API estará disponível em **`http://localhost:3333`** (ou na porta configurada no projeto).
+A API estará disponível em **`http://localhost:3333`**.
 
 ---
 
