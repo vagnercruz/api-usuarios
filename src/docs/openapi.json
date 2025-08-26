@@ -5,7 +5,9 @@
     "version": "1.0.0",
     "description": "CRUD de usuários persistindo em data/users.json com validação por schema (Zod)."
   },
-  "servers": [{ "url": "http://localhost:3333" }],
+  "servers": [
+    { "url": "http://localhost:3333" }
+  ],
   "paths": {
     "/usuarios": {
       "get": {
@@ -15,7 +17,21 @@
             "description": "Lista de usuários",
             "content": {
               "application/json": {
-                "schema": { "type": "array", "items": { "$ref": "#/components/schemas/Usuario" } }
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Usuario" }
+                },
+                "example": [
+                  {
+                    "id": "f6a6c0a8-8c3a-4f4b-9a9e-12cbe1b4a7f1",
+                    "nome": "Ana",
+                    "sobrenome": "Silva",
+                    "idade": 28,
+                    "profissao": "Desenvolvedora",
+                    "cidade": "São Paulo",
+                    "estado": "SP"
+                  }
+                ]
               }
             }
           }
@@ -46,9 +62,22 @@
         "responses": {
           "201": {
             "description": "Criado",
-            "headers": { "Location": { "schema": { "type": "string" } } },
+            "headers": {
+              "Location": { "schema": { "type": "string" } }
+            },
             "content": {
-              "application/json": { "schema": { "$ref": "#/components/schemas/Usuario" } }
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Usuario" },
+                "example": {
+                  "id": "f6a6c0a8-8c3a-4f4b-9a9e-12cbe1b4a7f1",
+                  "nome": "Ana",
+                  "sobrenome": "Silva",
+                  "idade": 28,
+                  "profissao": "Desenvolvedora",
+                  "cidade": "São Paulo",
+                  "estado": "SP"
+                }
+              }
             }
           },
           "400": { "$ref": "#/components/responses/Validacao400" }
@@ -59,17 +88,43 @@
       "get": {
         "summary": "Obter usuário por ID",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
         ],
         "responses": {
-          "200": { "description": "OK", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Usuario" } } } },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Usuario" },
+                "example": {
+                  "id": "f6a6c0a8-8c3a-4f4b-9a9e-12cbe1b4a7f1",
+                  "nome": "Ana",
+                  "sobrenome": "Silva",
+                  "idade": 28,
+                  "profissao": "Desenvolvedora",
+                  "cidade": "São Paulo",
+                  "estado": "SP"
+                }
+              }
+            }
+          },
           "404": { "$ref": "#/components/responses/NaoEncontrado404" }
         }
       },
       "put": {
         "summary": "Atualizar usuário por ID (PUT)",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
         ],
         "requestBody": {
           "required": true,
@@ -92,7 +147,23 @@
           }
         },
         "responses": {
-          "200": { "description": "Atualizado", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Usuario" } } } },
+          "200": {
+            "description": "Atualizado",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Usuario" },
+                "example": {
+                  "id": "f6a6c0a8-8c3a-4f4b-9a9e-12cbe1b4a7f1",
+                  "nome": "Ana",
+                  "sobrenome": "Souza",
+                  "idade": 29,
+                  "profissao": "Desenvolvedora",
+                  "cidade": "São Paulo",
+                  "estado": "SP"
+                }
+              }
+            }
+          },
           "400": { "$ref": "#/components/responses/Validacao400" },
           "404": { "$ref": "#/components/responses/NaoEncontrado404" }
         }
@@ -100,7 +171,12 @@
       "delete": {
         "summary": "Remover usuário por ID",
         "parameters": [
-          { "name": "id", "in": "path", "required": true, "schema": { "type": "string", "format": "uuid" } }
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "format": "uuid" }
+          }
         ],
         "responses": {
           "204": { "description": "Removido sem corpo" },
@@ -125,7 +201,7 @@
             "enum": ["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"]
           }
         },
-        "required": ["id","nome","sobrenome","idade","profissao","cidade","estado"]
+        "required": ["id", "nome", "sobrenome", "idade", "profissao", "cidade", "estado"]
       },
       "UsuarioCriacao": {
         "type": "object",
@@ -140,7 +216,7 @@
             "enum": ["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"]
           }
         },
-        "required": ["nome","sobrenome","idade","profissao","cidade","estado"]
+        "required": ["nome", "sobrenome", "idade", "profissao", "cidade", "estado"]
       }
     },
     "responses": {
@@ -157,12 +233,29 @@
                   "items": {
                     "type": "object",
                     "properties": {
-                      "caminho": { "type": "array", "items": { "type": "string" } },
+                      "caminho": {
+                        "type": "array",
+                        "items": { "type": "string" }
+                      },
                       "mensagem": { "type": "string" }
                     }
                   }
                 }
-              }
+              },
+              "required": ["erro", "detalhes"]
+            },
+            "example": {
+              "erro": "Erro de validação",
+              "detalhes": [
+                {
+                  "caminho": ["nome"],
+                  "mensagem": "nome deve ter pelo menos 2 caracteres"
+                },
+                {
+                  "caminho": ["idade"],
+                  "mensagem": "idade mínima é 0"
+                }
+              ]
             }
           }
         }
