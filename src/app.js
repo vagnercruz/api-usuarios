@@ -3,9 +3,12 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDoc = require('./docs/openapi.json');
 const usuariosRouter = require('./routes/usuarios');
 const { manipuladorErros } = require('./middlewares/erros');
+const cors = require('cors');
 
 const app = express();
 app.use(express.json());
+
+app.use(cors());
 
 app.get('/', (_req, res) => {
   res.json({ status: 'ok' });
